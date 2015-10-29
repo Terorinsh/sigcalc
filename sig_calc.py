@@ -1,3 +1,31 @@
+# funkcijas minimala apjoma palielinasanai lidz 5 un 10.
+#aprekina pedejo skaitli
+def ped(x):
+	ga = len(str(x))
+	ped = int(str(x)[ga-1])
+	return ped
+
+# palielina lidz demsitiem
+def ped0(x):
+	while True:
+		if ped(x) != 0:
+			x = int(x) + 1
+		else:
+			x = int(x)
+			break
+	return x
+	
+# palielina lidz pieciem
+def ped05(x):
+	while True:
+		if ped(x) == 0 or ped(x) == 5:
+			x = int(x)
+			break
+		else:
+			x = int(x) + 1
+			
+	return x
+	
 # Definejam speiseri... ieliek atstarpes formatejot
 def spcr(x):
 	x = str(x)
@@ -24,18 +52,19 @@ def pvn(x):
 	return x
 
 def help():
-		print " "
-		print "----------------------------------------------------"
-		print "ERROR:"
-		print "----------------------------------------------------"
-		print "ievadiet pakalpojuma kodu, atstarpi, jauno skaitli."
-		print "Piemeram: >_2 40"
-		print "----------------------------------------------------"
-		print "Papild komandas:"
-		print "alfa, beta, gamma, paka4, paka5, paka6"
-		print "exit, quit, help"
-		print "----------------------------------------------------"
-
+	print "\n\n\n\n\n\n\n" 
+	print "--------------Nepareiza ievade---------------"
+	print "ievadiet pakalpojuma kodu, un skaitu:"
+	print "Piemeram: >_2 40"
+	print "---------------------------------------------"
+def komandas():
+	print "----------------=paku kodi=------------------"
+	print "----alfa--beta--gamma--paka4--paka5--paka6 --"
+	print "----3.50--7.05--11.75--14.10--17.60--24.70---"
+	print "---------------------------------------------"
+	print "---exit----------help----cits---------quit---"
+	print "---------------------------------------------"
+	
 # definejam mainigos
 summa = 0
 x = 0
@@ -77,7 +106,9 @@ while True:
 	vel_gb = "velamie gb: " + str(vel_gb)
 	
 	# Drukaajam UI!
-	print "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	print "\n\n\n\n\n\n\n" 
+	komandas()
+	print "\n\n\n\n\n\n\n" 
 	print "---------------------------------------------"
 	print "1) Apjoms lapai   gb :", spcr(ix1),"Eur:", ex1
 	print "2) E-pastu skaits gab:", spcr(ix2),"Eur:", ex2, vel_gb
@@ -90,7 +121,7 @@ while True:
 	print "---------------------------------------------"
 	
 	# ievade
-	ieksa = raw_input(">_")
+	ieksa = raw_input("kods skaits >_")
 	
 	# Sagremojam komandu
 	try:
@@ -115,7 +146,8 @@ while True:
 			paka = ieksa
 			pakalp = pak6
 		elif ieksa == "help":
-			print help()
+			help()
+			komandas()
 			raw_input("Spiediet Enter to lai turpinatu")
 		else:
 			x = int(ieksa[:1])
@@ -123,15 +155,16 @@ while True:
 			if x == 1:
 				ix1 = y
 			elif x == 2:
-				ix2 = y
+				ix2 = ped0(y)
 			elif x == 3:
-				ix3 = y
+				ix3 = ped05(y)
 			elif x == 4:
 				ix4 = y
 				
 	# Drukajam Error!
 	except:
 		help()
+		komandas()
 		raw_input("Spiediet Enter to lai turpinatu")
 		
 	
