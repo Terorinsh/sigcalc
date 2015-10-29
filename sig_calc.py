@@ -65,24 +65,29 @@ while True:
 	ex4 = aprekins(ix4,pakalp[3],cen[3])
 	summa = ex1 + ex2 + ex3 + ex4 + pakalp[4]
 	
-	# rekinam e-pastu lielumu, 
+	# rekinam e-pastu lielumus, 
 	# try - except jo bija errors... nez kapec
 	try:
 		ep_gb = float(ix3) / float(ix2)
 	except:
 		ep_gb = 0
+	ep_gb = "gb gabalaa: " + str(ep_gb)
+		
+	vel_gb = ix2 * 5
+	vel_gb = "velamie gb: " + str(vel_gb)
 	
 	# Drukaajam UI!
-	print "\n\n\n---------------------------------"
-	print "1) Apjoms lapai  :", spcr(ix1),"Eur:", ex1
-	print "2) E-pastu skaits:", spcr(ix2),"Eur:", ex2
-	print "3) E-pastu gb/kop:", spcr(ix3),"Eur:", ex3, "GB/GAB", ep_gb
-	print "4) Datu Bazes    :", spcr(ix4),"Eur:", ex4
-	print "---------------------------------"
+	print "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	print "---------------------------------------------"
+	print "1) Apjoms lapai   gb :", spcr(ix1),"Eur:", ex1
+	print "2) E-pastu skaits gab:", spcr(ix2),"Eur:", ex2, vel_gb
+	print "3) E-pastu gb/kop gb :", spcr(ix3),"Eur:", ex3, ep_gb
+	print "4) Datu Bazes     gab:", spcr(ix4),"Eur:", ex4
+	print "---------------------------------------------"
 	print "   Bazes paka    :", paka
-	print "---------------------------------"
+	print "---------------------------------------------"
 	print "   Summa EUR :",summa,"Ar PVN:", pvn(summa)
-	print "---------------------------------"
+	print "---------------------------------------------"
 	
 	# ievade
 	ieksa = raw_input(">_")
