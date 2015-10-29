@@ -32,51 +32,68 @@ ep_gb_paka = 0
 db_paka = 0
 naudinas = 0
 
+pak1 = [1,10,50,2,3.50]
+pak2 = [2,20,100,2,7.05]
+pak3 = [4,30,150,2,11.75]
+pakalp = [0,0,0,0,0]
+
 while True:
+	
 	if paka == "alfa":
-		gb_paka = 1
-		ep_paka =  10
-		ep_gb_paka = 50
-		db_paka = 2
-		naudinas = 3.50
-	if paka == "beta":
-		gb_paka = 2
-		ep_paka = 20
-		ep_gb_paka = 100
-		db_paka = 4
-		naudinas = 7.05
-	if paka == "gamma":
-		gb_paka = 4
-		ep_paka = 30
-		ep_gb_paka = 150
-		db_paka = 6
-		naudinas = 11.75
+		pakalp = pak1
+	elif paka == "beta":
+		pakalp = pak2
+	elif paka == "gamma":
+		pakalp = pak3
+	
+#	if paka == "alfa":
+#		gb_paka = 1
+#		ep_paka =  10
+#		ep_gb_paka = 50
+#		db_paka = 2
+#		naudinas = 3.50
+#	if paka == "beta":
+#		gb_paka = 2
+#		ep_paka = 20
+#		ep_gb_paka = 100
+#		db_paka = 4
+#		naudinas = 7.05
+#	if paka == "gamma":
+#		gb_paka = 4
+#		ep_paka = 30
+#		ep_gb_paka = 150
+#		db_paka = 6
+#		naudinas = 11.75
 		
-	gb_cena = float(gb_apjoms) - gb_paka
+	gb_cena = float(gb_apjoms) - pakalp[0]
 	if gb_cena > 0:
 		gb_cena = gb_cena * 0.6
 	else:
 		gb_cena = 0
 		
-	ep_cena = float(ep_skaits) - ep_paka
+	ep_cena = float(ep_skaits) - pakalp[1]
+	print "-->", ep_cena
 	if ep_cena > 0:
+		print "-->", ep_cena
 		ep_cena = ep_cena * 0.06
+		print "-->", ep_cena
 	else:
 		ep_cena = 0
+		print "-->", ep_cena
 		
-	ep_gb_cena = float(ep_apjoms) - ep_gb_paka
+	ep_gb_cena = float(ep_apjoms) - pakalp[2]
 	if ep_gb_cena > 0:
 		ep_gb_cena = ep_gb_cena * 0.082
 	else:
 		ep_gb_cena = 0
 		
-	db_cena = float(db_skaits) - db_paka
+	db_cena = float(db_skaits) - pakalp[3]
 	if db_cena > 0:
 		db_cena = db_cena * 1.7
 	else:
 		db_cena = 0
 		
-	summa = gb_cena + ep_cena + ep_gb_cena + db_cena + naudinas
+	summa = gb_cena + ep_cena + ep_gb_cena + db_cena + pakalp[4]
 	summa_pvn = (float(summa) * 0.21) + float(summa)
 	try:
 		ep_gb = float(ep_apjoms) / float(ep_skaits)
@@ -136,7 +153,7 @@ while True:
 		print "Papild komandas:"
 		print "alfa, beta, gamma, exit, quit"
 		print "----------------------------------------------------"
-		raw_input("Spiediet Enter to lai turpinātu")
+		raw_input("Spiediet Enter to lai turpinatu")
 		
 	
 print "Uzredzi!"
