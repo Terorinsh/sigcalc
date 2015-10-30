@@ -53,17 +53,29 @@ def pvn(x):
 
 def help():
 	print "\n\n\n\n\n\n\n" 
-	print "--------------Nepareiza ievade---------------"
+	print "--------------Nepareiza ievade----------------"
 	print "ievadiet pakalpojuma kodu, un skaitu:"
 	print "Piemeram: >_2 40"
-	print "---------------------------------------------"
+	print "----------------------------------------------"
 def komandas():
-	print "----------------=paku kodi=------------------"
-	print "----alfa--beta--gamma--paka4--paka5--paka6 --"
-	print "----3.50--7.05--11.75--14.10--17.60--24.70---"
-	print "---------------------------------------------"
-	print "---exit----------help----cits---------quit---"
-	print "---------------------------------------------"
+	print "----------------=paku kodi=-------------------"
+	print "----alfa--beta--gamma--paka4--paka5--paka6 ---"
+	print "----3.50--7.05--11.75--14.10--17.60--24.70----"
+	print "----------------------------------------------"
+	print "----exit---------help----cits---------quit----"
+	print "----------------------------------------------"
+
+# kalkulejam gigabaitus hostingam. jo minimala paka +5gb
+def gb(ievade,paka):
+	if paka == "alfa" and ievade > 1:
+		ievade = ped05(ievade) + 1
+	elif paka == "beta" and ievade > 2:
+		ievade = ped05(ievade) + 2
+	elif paka == "gamma" and ievade > 4:
+		ievade = ped05(ievade) + 4
+	else:
+		ievase = ievade
+	return ievade
 	
 # definejam mainigos
 summa = 0
@@ -73,6 +85,7 @@ ix1 = 0
 ix2 = 0
 ix3 = 0
 ix4 = 0
+ix2x = 0
 paka = '--nav noradits--'
 pakalp = [0,0,0,0,0]
 
@@ -100,25 +113,29 @@ while True:
 		ep_gb = float(ix3) / float(ix2)
 	except:
 		ep_gb = 0
-	ep_gb = "gb gabalaa: " + str(ep_gb)
+	ep_gb = "Kastites lielums: " + str(ep_gb)
 		
 	vel_gb = ix2 * 5
-	vel_gb = "velamie gb: " + str(vel_gb)
+	vel_gb = "Ieteicamie gb: " + str(vel_gb)
 	
 	# Drukaajam UI!
 	print "\n\n\n\n\n\n\n" 
 	komandas()
 	print "\n\n\n\n\n\n\n" 
-	print "---------------------------------------------"
-	print "1) Apjoms lapai   gb :", spcr(ix1),"Eur:", ex1
-	print "2) E-pastu skaits gab:", spcr(ix2),"Eur:", ex2, vel_gb
-	print "3) E-pastu gb/kop gb :", spcr(ix3),"Eur:", ex3, ep_gb
-	print "4) Datu Bazes     gab:", spcr(ix4),"Eur:", ex4
-	print "---------------------------------------------"
+	print "---Pakalpojumi--------------------------------"
+	print "1) Apjoms lapai   gb :", spcr(gb(ix1,paka)),"Eur:", ex1
+	print "2) E-pastu skaits gab:", spcr(ix2x),"Eur:", ex2
+	print "3) E-pastu gb/kop gb :", spcr(ix3), "Eur:", ex3
+	print "4) Datu Bazes     gab:", spcr(ix4), "Eur:", ex4
+	print "\n---Klientu-velmes-----------------------------"
+	print "   E-mail skaits   :", ix2, vel_gb 
+	print	"  ",ep_gb
+	print "   Lapas apjoms    :", ix1
+	print "----------------------------------------------"
 	print "   Bazes paka    :", paka
-	print "---------------------------------------------"
+	print "----------------------------------------------"
 	print "   Summa EUR :",summa,"Ar PVN:", pvn(summa)
-	print "---------------------------------------------"
+	print "----------------------------------------------"
 	
 	# ievade
 	ieksa = raw_input("kods skaits >_")
@@ -154,8 +171,12 @@ while True:
 			y = int(ieksa[1:])
 			if x == 1:
 				ix1 = y
+				
 			elif x == 2:
-				ix2 = ped0(y)
+				# ix2x apalotais apjoms 
+				ix2x = ped0(y)
+				# velamais kastisu skaits
+				ix2 = y
 			elif x == 3:
 				ix3 = ped05(y)
 			elif x == 4:
