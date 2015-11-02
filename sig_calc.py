@@ -85,6 +85,7 @@ ix1 = 0
 ix2 = 0
 ix3 = 0
 ix4 = 0
+ix1x = 0
 ix2x = 0
 paka = '--nav noradits--'
 pakalp = [0,0,0,0,0]
@@ -99,10 +100,17 @@ pak6 = [20,50,250,10,24.70]
 # pakalpojumu cenas gab
 cen = [0.6,0.06,0.082,1.7]
 
+loop = 0
+
 while True:
+	loop = loop + 1
+	print "loop", loop
 	# Rekinam cenas un summu
-	ex1 = aprekins(ix1,pakalp[0],cen[0])
-	ex2 = aprekins(ix2,pakalp[1],cen[1])
+	
+	ix1x = gb(ix1,paka)
+	
+	ex1 = aprekins(ix1x,pakalp[0],cen[0])
+	ex2 = aprekins(ix2x,pakalp[1],cen[1])
 	ex3 = aprekins(ix3,pakalp[2],cen[2])
 	ex4 = aprekins(ix4,pakalp[3],cen[3])
 	summa = ex1 + ex2 + ex3 + ex4 + pakalp[4]
@@ -118,12 +126,13 @@ while True:
 	vel_gb = ix2 * 5
 	vel_gb = "Ieteicamie gb: " + str(vel_gb)
 	
+	
 	# Drukaajam UI!
 	print "\n\n\n\n\n\n\n" 
 	komandas()
 	print "\n\n\n\n\n\n\n" 
 	print "---Pakalpojumi--------------------------------"
-	print "1) Apjoms lapai   gb :", spcr(gb(ix1,paka)),"Eur:", ex1
+	print "1) Apjoms lapai   gb :", spcr(ix1x),"Eur:", ex1
 	print "2) E-pastu skaits gab:", spcr(ix2x),"Eur:", ex2
 	print "3) E-pastu gb/kop gb :", spcr(ix3), "Eur:", ex3
 	print "4) Datu Bazes     gab:", spcr(ix4), "Eur:", ex4
@@ -147,21 +156,27 @@ while True:
 		elif ieksa == "alfa":
 			pakalp = pak1
 			paka = ieksa
+			continue
 		elif ieksa == "beta":
 			pakalp = pak2
 			paka = ieksa
+			continue
 		elif ieksa == "gamma":
 			pakalp = pak3
 			paka = ieksa
+			continue
 		elif ieksa == "paka4":
 			paka = ieksa
 			pakalp = pak4
+			continue
 		elif ieksa == "paka5":
 			paka = ieksa
 			pakalp = pak5
+			continue
 		elif ieksa == "paka6":
 			paka = ieksa
 			pakalp = pak6
+			continue
 		elif ieksa == "help":
 			help()
 			komandas()
@@ -181,7 +196,8 @@ while True:
 				ix3 = ped05(y)
 			elif x == 4:
 				ix4 = y
-				
+		
+		
 	# Drukajam Error!
 	except:
 		help()
